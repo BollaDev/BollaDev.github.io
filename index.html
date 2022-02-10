@@ -1,36 +1,234 @@
+
 <!DOCTYPE html>
 
-
 <html>
-	<body>
-		<h1>Hello World</h1>
-		<p>I'm hosted with GitHub Pages.</p>
 
-		<div class="button">
-      		<button style="color: red" onclick="button1()">button</button>
-    	</div
+  <body>
+    <h1>
+      	MATH
+    </h1>
+    
+    <p id="text1">
+    		paragraph 
+    </p>
+    
+    <div class="p3">
+      	<input style="background-color:darkgrey; border-color:black; color:black" id="input1" type="text" spellcheck="false" size=20 color="red">
+    </div>
+    
+    <div class="p1">
+      	<input style="background-color:darkgrey; border-color:black; color:black" id="input2" type="search" spellcheck="false" onblur="", placeholder="answer here">
+    </div>
+    
+    <div class="p2">
+    		<button style="background-color:darkgrey; border-color:grey; color:black" onclick="enter()">Enter</button>
+    		<button style="background-color:darkgrey; border-color:grey; color:black" onclick="skip()">Skip</button>
+    </div>
+    
+    <div class="row4">
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">(</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">)</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">,</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="enter()">=</button>
+    </div>
+    
+    <div class="slidecontainer">
+    		change difficulty
+  		<input type="range" min="1" max="100" value="50" class="slider" id="myRange" onblur="slider(value)">
+  	</div>
+    
+    <div class="row1">
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">7</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">8</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">9</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">-</button>
+    </div>
+    <div class="row2">
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">4</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">5</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">6</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">+</button>
+    </div>
+    <div class="row3">
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">1</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">2</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">3</button>
+    		<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">*</button>
+    </div
+  
+ 
+  </body>
+  
+  <script>
+  answers = [];
+	operators = ["+", "-", "*"]
+	task = "";
+	taskAnswer = "";
+	keyString = "";
+	Max = 10;
 
-	</body>
 
-	<style>
-		h1 {
-			color: black;
-			font-size: 50px;
-		}
+	document.getElementById("input1").style.height = "170px";
 
-		p {
-			color: purple;
-			font-size: 20px;
-		}
-	</style>
+	newTask();
 
-	<script>
-		function button1() {
-			console.log("button pressed!")
-		}
-	</script>
+	function newTask() {
+  		keyString = "";
+  		task = String(Math.floor(Math.random() * Max)) + operators[Math.floor(Math.random() * 3)] + String(Math.floor(Math.random() * Max));
+  		taskAnswer = String(eval(task));
+  		document.getElementById("text1").textContent = task;
+  		document.getElementById("input2").style.color = "black";
+  		document.getElementById("input1").style.color = "red";
+	}
 
+
+	function enter() {
+  		val = document.getElementById('input2').value;
+  		console.log(val);
+  
+  		if (String(val) == String(taskAnswer)){
+    			while(answers.length > 0) {
+      			answers.pop();
+    		}
+    		document.getElementById("input1").value = "";
+    		document.getElementById("input2").value = "";
+    		document.getElementById("input2").style.color = "green";
+    		newTask();
+  		} else {
+    			keyString = "";
+    			console.log("Wrong");
+    			answers.push(val);
+    			document.getElementById("input1").value = answers;
+    			document.getElementById("input2").value = "";
+  		}
+	}
+
+
+	function skip() {
+  		while(answers.length > 0) {
+      		answers.pop();
+ 	}	
+ 
+  	newTask();
+  		document.getElementById('input2').value = "";
+  		document.getElementById('input1').value = "";
+  		document.getElementById("input2").style.color = "black";
+	}
+
+	function keypad(value) {
+  		keyString = keyString + value;
+  		document.getElementById("input2").value = keyString;
+	}
+	
+	
+	function slider(sliderValue) {
+		Max = sliderValue;
+	}
+
+  </script>
+  
+  <style>
+  	h1 {
+  		color: black;
+  		font-size: 50px;
+  		font-family: arial;
+  		position: fixed;
+  		top: 5%;
+  		left: 50%;
+ 		 transform: translate(-50%, -50%);
+	}
+
+	p {
+  		color: black;
+  		font-size: 20px;
+  		font-family: arial;
+  		position: fixed;
+  		top: 15%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
+	}
+
+	.p3 {
+  		color: black;
+  		font-size: 10px;
+  		font-family: arial;
+  		position: fixed;
+  		top: 34%;
+  		left: 50%;
+ 		 transform: translate(-50%, -50%);
+	}
+
+	.p1 {
+  		color: black;
+  		font-size: 20px;
+  		font-family: arial;
+  		position: fixed;
+  		top: 50%;
+ 		  left: 50%;
+  		transform: translate(-50%, -50%);
+	}
+
+	.p2 {
+  		position: fixed;
+  		top: 55%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
+	}
+
+	.row1 {
+  		position: fixed;
+  		top: 60%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
+  		font-size: 20px;
+	}
+	.row2 {
+  		position: fixed;
+  		top: 64%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
+  		font-size: 20px;
+	}
+	.row3 {
+  		position: fixed;
+  		top: 68%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
+  		font-size: 20px;
+	}
+	.row4 {
+  		position: fixed;
+  		top: 72%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
+  		font-size: 20px;
+	}
+	
+	.slidecontainer {
+		position: fixed;
+  		top: 80%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
+  		font-size: 20px;
+  		font-family: arial;
+	}
+
+	body {
+  		background-color: grey;
+	}
+	
+  </style>
+  
 </html>
+
+
+
+
+
+
+
+
+
 
 
 
