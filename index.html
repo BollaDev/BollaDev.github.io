@@ -1,87 +1,224 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Truck Game</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-  </head>
+
+<html>
+
   <body>
-    <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600></canvas>
-      <div id="unity-loading-bar">
-        <div id="unity-logo"></div>
-        <div id="unity-progress-bar-empty">
-          <div id="unity-progress-bar-full"></div>
-        </div>
-      </div>
-      <div id="unity-mobile-warning">
-        WebGL builds are not supported on mobile devices.
-      </div>
-      <div id="unity-footer">
-        <div id="unity-webgl-logo"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Truck Game</div>
-      </div>
+    <h1>
+      	MATH
+    </h1>
+    
+    <p id="text1">
+    		paragraph 
+    </p>
+    
+    <div class="p3">
+      	<input style="background-color:darkgrey; border-color:black; color:black" id="input1" type="text" spellcheck="false" size=20 color="red">
     </div>
-    <script>
-      var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/BollaDev.github.io.loader.js";
-      var config = {
-        dataUrl: buildUrl + "/BollaDev.github.io.data",
-        frameworkUrl: buildUrl + "/BollaDev.github.io.framework.js",
-        codeUrl: buildUrl + "/BollaDev.github.io.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "Spira Studios",
-        productName: "Truck Game",
-        productVersion: "0.3",
-      };
-
-      var container = document.querySelector("#unity-container");
-      var canvas = document.querySelector("#unity-canvas");
-      var loadingBar = document.querySelector("#unity-loading-bar");
-      var progressBarFull = document.querySelector("#unity-progress-bar-full");
-      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      var mobileWarning = document.querySelector("#unity-mobile-warning");
-
-      // By default Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
-
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        container.className = "unity-mobile";
-        // Avoid draining fillrate performance on mobile devices,
-        // and default/override low DPI mode on mobile browsers.
-        config.devicePixelRatio = 1;
-        mobileWarning.style.display = "block";
-        setTimeout(() => {
-          mobileWarning.style.display = "none";
-        }, 5000);
-      } else {
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
-      }
-      loadingBar.style.display = "block";
-
-      var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
-        }).then((unityInstance) => {
-          loadingBar.style.display = "none";
-          fullscreenButton.onclick = () => {
-            unityInstance.SetFullscreen(1);
-          };
-        }).catch((message) => {
-          alert(message);
-        });
-      };
-      document.body.appendChild(script);
-    </script>
+    
+    <div class="p1">
+      	<input style="background-color:darkgrey; border-color:black; color:black" id="input2" type="search" spellcheck="false" onblur="", placeholder="answer here">
+    </div>
+    
+    <div class="p2">
+    		<button style="background-color:darkgrey; border-color:grey; color:black" onclick="enter()">Enter</button>
+    		<button style="background-color:darkgrey; border-color:grey; color:black" onclick="skip()">Skip</button>
+    </div>
+    
+    <div class="row4">
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">(</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">)</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">,</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="enter()">=</button>
+    </div>
+    
+    <div class="slidecontainer">
+    		change difficulty
+  		<input type="range" min="1" max="100" value="50" class="slider" id="myRange" onblur="slider(value)">
+  	</div>
+    
+    <div class="row1">
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">7</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">8</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">9</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">-</button>
+    </div>
+    <div class="row2">
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">4</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">5</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">6</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">+</button>
+    </div>
+    <div class="row3">
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">1</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">2</button>
+      	<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">3</button>
+    		<button style="background-color:darkgrey; border-color:grey; color:black" onclick="keypad(innerText)">*</button>
+    </div
+  
+ 
   </body>
+  
+  <script>
+  answers = [];
+	operators = ["+", "-", "*"]
+	task = "";
+	taskAnswer = "";
+	keyString = "";
+	Max = 10;
+
+
+	document.getElementById("input1").style.height = "170px";
+
+	newTask();
+
+	function newTask() {
+  		keyString = "";
+  		task = String(Math.floor(Math.random() * Max)) + operators[Math.floor(Math.random() * 3)] + String(Math.floor(Math.random() * Max));
+  		taskAnswer = String(eval(task));
+  		document.getElementById("text1").textContent = task;
+  		document.getElementById("input2").style.color = "black";
+  		document.getElementById("input1").style.color = "red";
+	}
+
+
+	function enter() {
+  		val = document.getElementById('input2').value;
+  		console.log(val);
+  
+  		if (String(val) == String(taskAnswer)){
+    			while(answers.length > 0) {
+      			answers.pop();
+    		}
+    		document.getElementById("input1").value = "";
+    		document.getElementById("input2").value = "";
+    		document.getElementById("input2").style.color = "green";
+    		newTask();
+  		} else {
+    			keyString = "";
+    			console.log("Wrong");
+    			answers.push(val);
+    			document.getElementById("input1").value = answers;
+    			document.getElementById("input2").value = "";
+  		}
+	}
+
+
+	function skip() {
+  		while(answers.length > 0) {
+      		answers.pop();
+ 	}	
+ 
+  	newTask();
+  		document.getElementById('input2').value = "";
+  		document.getElementById('input1').value = "";
+  		document.getElementById("input2").style.color = "black";
+	}
+
+	function keypad(value) {
+  		keyString = keyString + value;
+  		document.getElementById("input2").value = keyString;
+	}
+	
+	
+	function slider(sliderValue) {
+		Max = sliderValue;
+	}
+
+  </script>
+  
+  <style>
+  	h1 {
+  		color: black;
+  		font-size: 50px;
+  		font-family: arial;
+  		position: fixed;
+  		top: 5%;
+  		left: 50%;
+ 		 transform: translate(-50%, -50%);
+	}
+
+	p {
+  		color: black;
+  		font-size: 20px;
+  		font-family: arial;
+  		position: fixed;
+  		top: 15%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
+	}
+
+	.p3 {
+  		color: black;
+  		font-size: 10px;
+  		font-family: arial;
+  		position: fixed;
+  		top: 34%;
+  		left: 50%;
+ 		 transform: translate(-50%, -50%);
+	}
+
+	.p1 {
+  		color: black;
+  		font-size: 20px;
+  		font-family: arial;
+  		position: fixed;
+  		top: 50%;
+ 		  left: 50%;
+  		transform: translate(-50%, -50%);
+	}
+
+	.p2 {
+  		position: fixed;
+  		top: 55%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
+	}
+
+	.row1 {
+  		position: fixed;
+  		top: 60%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
+  		font-size: 20px;
+	}
+	.row2 {
+  		position: fixed;
+  		top: 64%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
+  		font-size: 20px;
+	}
+	.row3 {
+  		position: fixed;
+  		top: 68%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
+  		font-size: 20px;
+	}
+	.row4 {
+  		position: fixed;
+  		top: 72%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
+  		font-size: 20px;
+	}
+	
+	.slidecontainer {
+		position: fixed;
+  		top: 80%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
+  		font-size: 20px;
+  		font-family: arial;
+	}
+
+	body {
+  		background-color: grey;
+	}
+	
+  </style>
+  
 </html>
+
+
+
