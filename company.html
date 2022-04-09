@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>about our company</title>
+
+        <div class="title">
+            <div class="title1">
+                <a>Matteo </a>
+                <a style="color: blue">Spira</a>
+                <a>ndelli</a>
+            </div>
+            <div class="title2">
+                <a style="color: blue">Spira</a>
+                <a>Studios</a>
+            </div>
+        </div>
+
+        <h1>(not a real company)</h1>
+        
+    </head>
+
+    <body>
+
+    </body>
+
+    <style>
+        a {
+            font-size: 50px;
+            font-family: Arial;
+        }
+
+        .title1 {
+            position: fixed;
+            left: 200px;
+            top: 0px;
+
+            animation-duration: 2s;
+            animation-play-state: running;
+            animation-name: forward1;
+        }
+        .title2 {
+            position: fixed;
+            left: 365px;
+            top: 60px;
+
+            animation-duration: 2s;
+            animation-play-state: running;
+            animation-name: forward2;
+        }
+
+        h1 {
+            position: fixed;
+            left: 360px;
+            top: 120px;
+            font-size: 15px;
+            font-family: Arial;
+
+            animation-duration: 2s;
+            animation-play-state: running;
+            animation-name: down1;
+        }
+
+        @keyframes forward1 {
+            0% {
+                left: -2000px;
+            }
+            50%{
+                left: 220px;
+            }
+            100% {
+                left: 200px;
+            }
+        }
+        @keyframes forward2 {
+            0% {
+                left: 2000px;
+            }
+            50%{
+                left: 345px;
+            }
+            100% {
+                left: 365px;
+            }
+        }
+        @keyframes down1 {
+            0% {
+                top: -300px;
+            }
+            50% {
+                top: 130px;
+            }
+            100% {
+                top: 120px;
+            }
+            
+        }
+    </style>
+
+</html>
+
+
