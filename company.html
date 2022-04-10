@@ -21,6 +21,8 @@
     </head>
 
     <body>
+        <img id="ceoImage" src="https://www.seekpng.com/png/detail/966-9665317_placeholder-image-person-jpg.png">
+        
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
             molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
@@ -60,6 +62,30 @@
             animation-duration: 2s;
             animation-play-state: running;
             animation-name: forward2;
+        }
+
+        #ceoImage {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            padding-top: 500px;
+            left: 0px;
+
+            animation-duration: 3s;
+            animation-play-state: running;
+            animation-name: forward5;
+        }
+
+        @keyframes forward5 {
+            0% {
+                left: 5000px;
+            }
+            50% {
+                left: -20px;
+            }
+            100%{
+                left: 0px;
+            }
         }
 
         p {
