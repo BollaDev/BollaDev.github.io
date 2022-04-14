@@ -34,11 +34,13 @@
         const pointer = new THREE.Vector2();
         const radius = 100;
 
+        var camZ = 30;
+
 
         var scene = new THREE.Scene();
 
         var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 30;
+        camera.position.z = camZ;
 
         var renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setClearColor("#add8e6");
@@ -54,6 +56,7 @@
             camera.updateProjectionMatrix();
         })
 
+        /*
         const moonTexture = new THREE.TextureLoader().load('moon.jpg')
         const moonNormal = new THREE.TextureLoader().load('moonNormalMap.jpg')
 
@@ -66,8 +69,25 @@
         const moon = new THREE.Mesh(geometry2, material2);
 
         moon.position.set(0, 0, 0);
+        moon.name = "moon";
         scene.add(moon);
+        */
 
+        const geometry6 = new THREE.DodecahedronGeometry(6, 0);
+        const material6 = new THREE.MeshPhongMaterial({ color: 0x87e873, opacity: 0.5, transparent: true });
+        const g = new THREE.Mesh(geometry6, material6);
+
+        g.position.set(0, 0, 0);
+        g.name = "g";
+        scene.add(g);
+
+        const geometry7 = new THREE.OctahedronGeometry(3, 1);
+        const material7 = new THREE.MeshPhongMaterial({ color: 0x1e49b3, opacity: 0.5, transparent: true });
+        const g2 = new THREE.Mesh(geometry7, material7);
+
+        g2.position.set(0, 0, 0);
+        g2.name = "g2";
+        scene.add(g2);
 
         const truckTexture = new THREE.TextureLoader().load('truck.jpeg')
         const cube1 = new THREE.BoxGeometry(2, 2, 2);
@@ -96,6 +116,7 @@
         var material = new THREE.MeshPhongMaterial({ color: 0xFF0000, opacity: 0.5, transparent: true });
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
+        mesh.name = "torus";
         mesh.position.z = 0;
 
         var ligth = new THREE.PointLight(0xFFFFFF, 1.5, 500000);
@@ -134,7 +155,7 @@
 
         window.onscroll = (e) => {
             const t = document.body.getBoundingClientRect().top;
-            camera.position.z = t * -0.02 + 30;
+            camera.position.z = t * -0.02 + camZ;
             console.log(camera.position.z);
 
             if (camera.position.z >= 70) {
@@ -148,10 +169,6 @@
             mesh.rotation.y += 0.02;
             mesh.rotation.z += 0.03;
 
-            moon.rotation.x += 0.01;
-            moon.rotation.y += 0.02;
-            moon.rotation.z += 0.03;
-
             truck.rotation.x += 0.01;
             truck.rotation.y += 0.02;
             truck.rotation.z += 0.03;
@@ -159,6 +176,10 @@
             planet.rotation.x += 0.01;
             planet.rotation.y += 0.02;
             planet.rotation.z += 0.03;
+
+            g.rotation.x += 0.01;
+            g.rotation.y += 0.02;
+            g.rotation.z += 0.03;
         }
 
 
