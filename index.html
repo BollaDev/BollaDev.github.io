@@ -73,6 +73,8 @@
         scene.add(moon);
         */
 
+
+        /*
         const geometry6 = new THREE.DodecahedronGeometry(6, 0);
         const material6 = new THREE.MeshPhongMaterial({ color: 0x87e873, opacity: 0.5, transparent: true });
         const g = new THREE.Mesh(geometry6, material6);
@@ -89,6 +91,15 @@
         g2.name = "g2";
         scene.add(g2);
 
+        var geometry = new THREE.TorusGeometry(10, 0.7, 16, 100);
+        var material = new THREE.MeshPhongMaterial({ color: 0xFF0000, opacity: 0.5, transparent: true });
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+        mesh.name = "torus";
+        mesh.position.z = 0;
+        */
+
+
         const truckTexture = new THREE.TextureLoader().load('truck.jpeg')
         const cube1 = new THREE.BoxGeometry(2, 2, 2);
         const material3 = new THREE.MeshStandardMaterial(
@@ -96,7 +107,7 @@
                 map: truckTexture,
             });
         const truck = new THREE.Mesh(cube1, material3);
-        truck.position.set(-5, 0, 30);
+        truck.position.set(-5, 0, 40);
         truck.name = "truck";
         scene.add(truck);
 
@@ -107,17 +118,12 @@
                 map: planetTexture,
             });
         const planet = new THREE.Mesh(cube2, material4);
-        planet.position.set(5, 0, 30);
+        planet.position.set(5, 0, 40);
         planet.name = "planet";
         scene.add(planet);
 
 
-        var geometry = new THREE.TorusGeometry(10, 0.7, 16, 100);
-        var material = new THREE.MeshPhongMaterial({ color: 0xFF0000, opacity: 0.5, transparent: true });
-        var mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
-        mesh.name = "torus";
-        mesh.position.z = 0;
+        
 
         var ligth = new THREE.PointLight(0xFFFFFF, 1.5, 500000);
         ligth.position.set(0, 40, 200)
@@ -153,6 +159,10 @@
         Array(0).fill().forEach(addStar);
 
 
+        function fade(object, opacity) {
+            object.material.opacity = opacity;
+        }
+
         window.onscroll = (e) => {
             const t = document.body.getBoundingClientRect().top;
             camera.position.z = t * -0.02 + camZ;
@@ -162,12 +172,18 @@
                 console.log("moveT")
                 document.getElementById("ad").style.animationPlayState = "running";
             }
+
+            /*
+            if (camera.position.z >= 43 && camera.position.z <= 100) {
+                mesh.position.z -= 10;
+                g.position.z -= 10;
+            }
+            */
+
         }
 
         function moveObjects() {
-            mesh.rotation.x += 0.01;
-            mesh.rotation.y += 0.02;
-            mesh.rotation.z += 0.03;
+            
 
             truck.rotation.x += 0.01;
             truck.rotation.y += 0.02;
@@ -177,9 +193,15 @@
             planet.rotation.y += 0.02;
             planet.rotation.z += 0.03;
 
-            g.rotation.x += 0.01;
+            /*
+            mesh.rotation.x += 0.01;
+            mesh.rotation.y += 0.02;
+            mesh.rotation.z += 0.03;
+
+            g.rotation.x += 0.03;
             g.rotation.y += 0.02;
-            g.rotation.z += 0.03;
+            g.rotation.z += 0.01;
+            */
         }
 
 
@@ -205,7 +227,7 @@
 
                 if (INTERSECTED != intersects[0].object) {
 
-                    
+
 
                     if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
 
@@ -223,7 +245,7 @@
                         else if (INTERSECTED.name == "planet") {
                             console.log("planet");
                             document.getElementById("planetT").style.color = "red";
-                        } 
+                        }
                     }
 
                 }
@@ -380,7 +402,3 @@
 </style>
 
 </html>
-
-
-
-
