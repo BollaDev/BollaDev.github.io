@@ -56,7 +56,7 @@
             camera.updateProjectionMatrix();
         })
 
-        /*
+        
         const moonTexture = new THREE.TextureLoader().load('moon.jpg')
         const moonNormal = new THREE.TextureLoader().load('moonNormalMap.jpg')
 
@@ -71,10 +71,10 @@
         moon.position.set(0, 0, 0);
         moon.name = "moon";
         scene.add(moon);
-        */
+        
 
 
-        /*
+        
         const geometry6 = new THREE.DodecahedronGeometry(6, 0);
         const material6 = new THREE.MeshPhongMaterial({ color: 0x87e873, opacity: 0.5, transparent: true });
         const g = new THREE.Mesh(geometry6, material6);
@@ -97,7 +97,7 @@
         scene.add(mesh);
         mesh.name = "torus";
         mesh.position.z = 0;
-        */
+        
 
 
         const truckTexture = new THREE.TextureLoader().load('truck.jpeg')
@@ -193,7 +193,6 @@
             planet.rotation.y += 0.02;
             planet.rotation.z += 0.03;
 
-            /*
             mesh.rotation.x += 0.01;
             mesh.rotation.y += 0.02;
             mesh.rotation.z += 0.03;
@@ -201,7 +200,6 @@
             g.rotation.x += 0.03;
             g.rotation.y += 0.02;
             g.rotation.z += 0.01;
-            */
         }
 
 
@@ -402,3 +400,6 @@
 </style>
 
 </html>
+
+
+
