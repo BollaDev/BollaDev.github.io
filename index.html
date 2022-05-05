@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <!-- import threejs library -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
@@ -42,6 +43,7 @@
 
         document.body.appendChild(renderer.domElement);
 
+        /* create renderer scene and camera */
 
         window.addEventListener('resize', () => {
             renderer.setSize(window.innerWidth, window.innerHeight);
@@ -82,7 +84,6 @@
         mesh.name = "torus";
         mesh.position.z = 0;
         
-
         const truckTexture = new THREE.TextureLoader().load('truck.jpeg')
         const cube1 = new THREE.BoxGeometry(2, 2, 2);
         const material3 = new THREE.MeshStandardMaterial(
@@ -105,6 +106,7 @@
         planet.name = "planet";
         scene.add(planet);
 
+        /* create all the shapes materials and textures in the scene and positions them */
 
 
         var ligth = new THREE.PointLight(0xFFFFFF, 1.5, 500000);
@@ -135,8 +137,9 @@
             scene.add(truck2);
         }
 
-        Array(0).fill().forEach(addStar);
+        /* the function above createc spheres or stars in the scene, but its turned of for faster loading times */
 
+        Array(0).fill().forEach(addStar);
 
         function fade(object, opacity) {
             object.material.opacity = opacity;
@@ -162,9 +165,12 @@
             if (camera.position.z >= 70) {
                 document.getElementById("ad").style.animationPlayState = "running";
             }
-            console.log(t, camera.position.z, camera.rotation.y)
+
+            console.log(camera.position.z)
 
         }
+
+        /* move camera further away onscroll and rotate objects */
 
         function moveObjects() { 
             truck.rotation.x += 0.01;
@@ -239,24 +245,28 @@
 
             }
 
+            /* uses a raycast to check if mouse cursor hits object */
+
             moveObjects();
             renderer.render(scene, camera);
         }
 
         animate()
 
-
     </script>
 
     <div id="info">Spira Studios</div>
 
     <div id="text2">OUR GAMES AND APPS: </div>
-    <div id="truckT">Truck Game</div>
-    <div id="planetT">Your Weigth In Space </div>
+    <div id="truckT" href="truckgame.html">Truck Game</div>
+    <div id="planetT" href="yourweigthinspace.html">Your Weigth In Space </div>
+
+    <div id="unity">All are games are made with unity</div>
+    <div id="image">
+        <img id="image1" src="unityLogo.png">
+    </div>
 
     <div id="text">hello</div>
-
-    <div id="ad">DOWNLOAD ON GOOGLE PLAY</div>
 
 </body>
 
@@ -319,6 +329,26 @@
         color: rgb(192, 79, 79);
     }
 
+    #unity {
+        position: absolute;
+        top: 2000px;
+        width: 100%;
+        text-align: center;
+
+        font-size: 80px;
+        font-family: Arial;
+        font-weight: 500;
+
+        color: rgb(255, 255, 255);
+        background-color: black;
+    }
+
+    #image {
+        position: absolute;
+        top: 2090px;
+        width: 100%;
+        text-align: center;
+    }
 
     #planetT {
         position: absolute;
