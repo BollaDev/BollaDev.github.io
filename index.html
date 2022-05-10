@@ -16,6 +16,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
     <script src='threex.domevents.js'></script>
 
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
     <script type="module">
         import { OBJLoader } from './jsm/loaders/OBJLoader.js';
     </script>
@@ -249,6 +251,7 @@
 
             moveObjects();
             renderer.render(scene, camera);
+
         }
 
         animate()
@@ -275,9 +278,26 @@
         <img id="image1" src="unityLogo.png">
     </div>
 
+    <div id="button">
+        <input type="button" id='script' name="scriptbutton" value=" Run Script " onclick="goPython()">
+    </div>
+
     <div id="text">hello</div>
 
 </body>
+
+<script>
+
+    function goPython(){
+                $.ajax({
+                    url: "PYTHON.py",
+                    context: document.body
+                    }).done(function() {
+                    alert('finished python script');;
+                });
+    }
+    
+</script>
 
 <style>
     canvas {
@@ -365,6 +385,13 @@
     #image {
         position: absolute;
         top: 2090px;
+        width: 100%;
+        text-align: center;
+    }
+
+    #button {
+        position: absolute;
+        top: 6000px;
         width: 100%;
         text-align: center;
     }
