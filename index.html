@@ -125,6 +125,8 @@
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
+        var stars = []
+
         function addStar() {
             const truckTexture2 = new THREE.TextureLoader().load('truck.jpeg')
             const cube2 = new THREE.BoxGeometry(2, 2, 2);
@@ -137,11 +139,12 @@
             truck2.name = "truck2";
             truck2.position.set(Random(-50, 50), Random(-50, 50), Random(-100, 100));
             scene.add(truck2);
+            stars.push(truck2);
         }
 
         /* the function above createc spheres or stars in the scene, but its turned of for faster loading times */
 
-        Array(0).fill().forEach(addStar);
+        Array(100).fill().forEach(addStar);
 
         function fade(object, opacity) {
             object.material.opacity = opacity;
@@ -190,6 +193,13 @@
             g.rotation.x += 0.03;
             g.rotation.y += 0.02;
             g.rotation.z += 0.01;
+
+            for (var object in stars) {
+                o = stars[object]
+                o.rotation.x += 0.02;
+                o.rotation.y += 0.03;
+                o.rotation.z += 0.01;
+            }
         }
 
         raycaster = new THREE.Raycaster();
