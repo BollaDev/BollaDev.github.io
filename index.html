@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Spira-Studios</title>
+    <link rel="icon" href="favicon1.png">
+</head>
+
+<body>
+    <div id=Main>
+	<div id="s1">
+		<h1 style="font-family: Arial">Spira-Studios</h1>
+	</div>
+
+	<div id="s2">
+		 <p style="font-family: Arial">
+        Spira-Studios is an indie game studio founded by Matteo Spirandelli.
+        Spira-Studios has developed many games over the years.
+        </p>
+	</div> 
+    </div>
+
+    <div class="games">
+	<div id="game1">
+		<img src="truck.jpeg">
+		<div id="BackgroundShape">
+		<h2>Lorem Ipsum</h2>
+	</div>
+    </div>
+
+    
+</body>
+
+<style>
+
+body {
+  background-color: black;
+}
+
+h2 {
+  padding-top: 140px;
+  padding-left: 10px;
+  font-family: Arial;
+}
+
+#BackgroundShape {
+  height: 175px;
+  width: 175px;
+  border-radius: 10px;
+  background-color: gray;
+}
+
+#game1 {
+  position: relative;
+  top: 120px;
+  left: -2px;
+}
+
+h1 {
+  color: white;
+  position: absolute;
+  top: -15%;
+  left: 2%;
+
+}
+p {
+  color: white;
+  position: absolute;
+  top:  -10%;
+  left: 2%;
+}
+
+#s1 {
+  position: absolute;
+  height: 55px;
+  width: 50px;
+  border-radius: 10px;
+  background-color: purple;
+  position:absolute; left:5px; top:5px;
+}
+
+#s2 {
+  position: absolute;
+  height: 55px;
+  width: 50px;
+  border-radius: 10px;
+  background-color: darkblue;
+  position:absolute; left:5px; top:65px;
+}
+
+
+</style>
+
+<script>
+
+var w = window.innerWidth;
+var h = window.innerHeight;
+
+document.getElementById("s1").style.width = (w-5) + "px";
+document.getElementById("s2").style.width = (w-5) + "px";
+
+</script>
+
+</html>
+
+
